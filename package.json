@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "yarn build"
+    "build": "babel ./src --out-dir ./dist --copy-files"
   },
   "keywords": [
     "Fauna Add-on Netlify",
@@ -19,5 +19,10 @@
   "license": "ISC",
   "dependencies": {
     "faunadb": "^4.4.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "babel-preset-latest": "^6.24.1"
   }
 }
