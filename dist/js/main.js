@@ -1,8 +1,10 @@
 "use strict";
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-var create = function () {
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var create = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
     var url, createDB, res, data;
     return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -12,7 +14,10 @@ var create = function () {
             url = "/.netlify/functions/create";
             _context.next = 3;
             return fetch(url, {
-              body: JSON.stringify({ name: "Todo-list", desc: "Patrick's mother" }),
+              body: JSON.stringify({
+                name: "Todo-list",
+                desc: "Patrick's mother"
+              }),
               method: "POST",
               "Content-Type": "application/json"
             });
@@ -25,8 +30,6 @@ var create = function () {
           case 6:
             res = _context.sent;
             data = res.body;
-
-
             console.log(data);
 
           case 9:
@@ -34,7 +37,7 @@ var create = function () {
             return _context.stop();
         }
       }
-    }, _callee, undefined);
+    }, _callee);
   }));
 
   return function create() {
@@ -42,7 +45,7 @@ var create = function () {
   };
 }();
 
-var readAll = function () {
+var readAll = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
     var url, readNotes, res, data;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -61,8 +64,6 @@ var readAll = function () {
           case 6:
             res = _context2.sent;
             data = res.body;
-
-
             console.log(data);
 
           case 9:
@@ -70,7 +71,7 @@ var readAll = function () {
             return _context2.stop();
         }
       }
-    }, _callee2, undefined);
+    }, _callee2);
   }));
 
   return function readAll() {
@@ -78,7 +79,7 @@ var readAll = function () {
   };
 }();
 
-var update = function () {
+var update = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
     var url, readNotes, res, data;
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -88,7 +89,10 @@ var update = function () {
             url = "/.netlify/functions/update";
             _context3.next = 3;
             return fetch(url, {
-              body: JSON.stringify({ name: "negative", desc: "Jesus's mother" }),
+              body: JSON.stringify({
+                name: "negative",
+                desc: "Jesus's mother"
+              }),
               method: "PATCH",
               "Content-Type": "application/json"
             });
@@ -101,8 +105,6 @@ var update = function () {
           case 6:
             res = _context3.sent;
             data = res.body;
-
-
             console.log(data);
 
           case 9:
@@ -110,7 +112,7 @@ var update = function () {
             return _context3.stop();
         }
       }
-    }, _callee3, undefined);
+    }, _callee3);
   }));
 
   return function update() {
@@ -118,7 +120,7 @@ var update = function () {
   };
 }();
 
-var deleteOne = function () {
+var deleteOne = /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
     var url, readNotes, res, data;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
@@ -137,8 +139,6 @@ var deleteOne = function () {
           case 6:
             res = _context4.sent;
             data = res.body;
-
-
             console.log(data);
 
           case 9:
@@ -146,15 +146,13 @@ var deleteOne = function () {
             return _context4.stop();
         }
       }
-    }, _callee4, undefined);
+    }, _callee4);
   }));
 
   return function deleteOne() {
     return _ref4.apply(this, arguments);
   };
-}();
-
-// // create();
+}(); // // create();
 // // readAll();
 // update();
 // // deleteOne();
