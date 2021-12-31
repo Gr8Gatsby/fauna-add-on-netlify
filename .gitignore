@@ -1,8 +1,4 @@
-# Local Netlify folder
 node_modules
-
-# Local Netlify folder
 .netlify
-
-# dist
 dist
+yarn-error.log
