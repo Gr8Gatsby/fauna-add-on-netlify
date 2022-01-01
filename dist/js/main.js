@@ -1,164 +1,61 @@
-"use strict";
+(function () {
+  'use strict';
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+  const createJoke = async () => {
+    const url = "/.netlify/functions/createJoke";
+    const createDB = await fetch(url, {
+      body: JSON.stringify({ name: "Joke", desc: "Patrick's mother" }),
+      method: "POST",
+      "Content-Type": "application/json",
+    });
+    const res = await createDB.json();
+    const data = res.body;
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var create = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var url, createDB, res, data;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            url = "/.netlify/functions/create";
-            _context.next = 3;
-            return fetch(url, {
-              body: JSON.stringify({
-                name: "Todo-list",
-                desc: "Patrick's mother"
-              }),
-              method: "POST",
-              "Content-Type": "application/json"
-            });
-
-          case 3:
-            createDB = _context.sent;
-            _context.next = 6;
-            return createDB.json();
-
-          case 6:
-            res = _context.sent;
-            data = res.body;
-            console.log(data);
-
-          case 9:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function create() {
-    return _ref.apply(this, arguments);
+    console.log(data);
   };
-}();
 
-var readAll = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var url, readNotes, res, data;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            url = "/.netlify/functions/read";
-            _context2.next = 3;
-            return fetch(url);
+  const readAll = async () => {
+    const url = "/.netlify/functions/read";
+    const readNotes = await fetch(url);
+    const res = await readNotes.json();
+    const data = res.body;
 
-          case 3:
-            readNotes = _context2.sent;
-            _context2.next = 6;
-            return readNotes.json();
-
-          case 6:
-            res = _context2.sent;
-            data = res.body;
-            console.log(data);
-
-          case 9:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-
-  return function readAll() {
-    return _ref2.apply(this, arguments);
+    console.log(data);
   };
-}();
 
-var update = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-    var url, readNotes, res, data;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            url = "/.netlify/functions/update";
-            _context3.next = 3;
-            return fetch(url, {
-              body: JSON.stringify({
-                name: "negative",
-                desc: "Jesus's mother"
-              }),
-              method: "PATCH",
-              "Content-Type": "application/json"
-            });
+  const update = async () => {
+    const url = "/.netlify/functions/update";
+    const readNotes = await fetch(url, {
+      body: JSON.stringify({ name: "negative", desc: "Jesus's mother" }),
+      method: "PATCH",
+      "Content-Type": "application/json",
+    });
+    const res = await readNotes.json();
+    const data = res.body;
 
-          case 3:
-            readNotes = _context3.sent;
-            _context3.next = 6;
-            return readNotes.json();
-
-          case 6:
-            res = _context3.sent;
-            data = res.body;
-            console.log(data);
-
-          case 9:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-
-  return function update() {
-    return _ref3.apply(this, arguments);
+    console.log(data);
   };
-}();
 
-var deleteOne = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-    var url, readNotes, res, data;
-    return regeneratorRuntime.wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            url = "/.netlify/functions/delete";
-            _context4.next = 3;
-            return fetch(url);
+  const deleteOne = async () => {
+    const url = "/.netlify/functions/delete";
+    const readNotes = await fetch(url);
+    const res = await readNotes.json();
+    const data = res.body;
 
-          case 3:
-            readNotes = _context4.sent;
-            _context4.next = 6;
-            return readNotes.json();
-
-          case 6:
-            res = _context4.sent;
-            data = res.body;
-            console.log(data);
-
-          case 9:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4);
-  }));
-
-  return function deleteOne() {
-    return _ref4.apply(this, arguments);
+    console.log(data);
   };
-}(); // // create();
-// // readAll();
-// update();
-// // deleteOne();
 
 
-document.querySelector("#create").addEventListener("click", create);
-document.querySelector("#read").addEventListener("click", readAll);
-document.querySelector("#update").addEventListener("click", update);
-document.querySelector("#delete").addEventListener("click", deleteOne);
+  // // create();
+  // // readAll();
+  // update();
+  // // deleteOne();
+
+
+  document.querySelector("#create").addEventListener("click", createJoke);
+  document.querySelector("#read").addEventListener("click", readAll);
+  document.querySelector("#update").addEventListener("click", update);
+  document.querySelector("#delete").addEventListener("click", deleteOne);
+
+})();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL2pzL21haW4uanMiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgY3JlYXRlSm9rZSA9IGFzeW5jICgpID0+IHtcbiAgY29uc3QgdXJsID0gXCIvLm5ldGxpZnkvZnVuY3Rpb25zL2NyZWF0ZUpva2VcIjtcbiAgY29uc3QgY3JlYXRlREIgPSBhd2FpdCBmZXRjaCh1cmwsIHtcbiAgICBib2R5OiBKU09OLnN0cmluZ2lmeSh7IG5hbWU6IFwiSm9rZVwiLCBkZXNjOiBcIlBhdHJpY2sncyBtb3RoZXJcIiB9KSxcbiAgICBtZXRob2Q6IFwiUE9TVFwiLFxuICAgIFwiQ29udGVudC1UeXBlXCI6IFwiYXBwbGljYXRpb24vanNvblwiLFxuICB9KTtcbiAgY29uc3QgcmVzID0gYXdhaXQgY3JlYXRlREIuanNvbigpO1xuICBjb25zdCBkYXRhID0gcmVzLmJvZHk7XG5cbiAgY29uc29sZS5sb2coZGF0YSk7XG59O1xuXG5jb25zdCByZWFkQWxsID0gYXN5bmMgKCkgPT4ge1xuICBjb25zdCB1cmwgPSBcIi8ubmV0bGlmeS9mdW5jdGlvbnMvcmVhZFwiO1xuICBjb25zdCByZWFkTm90ZXMgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICBjb25zdCByZXMgPSBhd2FpdCByZWFkTm90ZXMuanNvbigpO1xuICBjb25zdCBkYXRhID0gcmVzLmJvZHk7XG5cbiAgY29uc29sZS5sb2coZGF0YSk7XG59O1xuXG5jb25zdCB1cGRhdGUgPSBhc3luYyAoKSA9PiB7XG4gIGNvbnN0IHVybCA9IFwiLy5uZXRsaWZ5L2Z1bmN0aW9ucy91cGRhdGVcIjtcbiAgY29uc3QgcmVhZE5vdGVzID0gYXdhaXQgZmV0Y2godXJsLCB7XG4gICAgYm9keTogSlNPTi5zdHJpbmdpZnkoeyBuYW1lOiBcIm5lZ2F0aXZlXCIsIGRlc2M6IFwiSmVzdXMncyBtb3RoZXJcIiB9KSxcbiAgICBtZXRob2Q6IFwiUEFUQ0hcIixcbiAgICBcIkNvbnRlbnQtVHlwZVwiOiBcImFwcGxpY2F0aW9uL2pzb25cIixcbiAgfSk7XG4gIGNvbnN0IHJlcyA9IGF3YWl0IHJlYWROb3Rlcy5qc29uKCk7XG4gIGNvbnN0IGRhdGEgPSByZXMuYm9keTtcblxuICBjb25zb2xlLmxvZyhkYXRhKTtcbn07XG5cbmNvbnN0IGRlbGV0ZU9uZSA9IGFzeW5jICgpID0+IHtcbiAgY29uc3QgdXJsID0gXCIvLm5ldGxpZnkvZnVuY3Rpb25zL2RlbGV0ZVwiO1xuICBjb25zdCByZWFkTm90ZXMgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICBjb25zdCByZXMgPSBhd2FpdCByZWFkTm90ZXMuanNvbigpO1xuICBjb25zdCBkYXRhID0gcmVzLmJvZHk7XG5cbiAgY29uc29sZS5sb2coZGF0YSk7XG59O1xuXG5cbi8vIC8vIGNyZWF0ZSgpO1xuLy8gLy8gcmVhZEFsbCgpO1xuLy8gdXBkYXRlKCk7XG4vLyAvLyBkZWxldGVPbmUoKTtcblxuXG5kb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiI2NyZWF0ZVwiKS5hZGRFdmVudExpc3RlbmVyKFwiY2xpY2tcIiwgY3JlYXRlSm9rZSk7XG5kb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiI3JlYWRcIikuYWRkRXZlbnRMaXN0ZW5lcihcImNsaWNrXCIsIHJlYWRBbGwpO1xuZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIiN1cGRhdGVcIikuYWRkRXZlbnRMaXN0ZW5lcihcImNsaWNrXCIsIHVwZGF0ZSk7XG5kb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiI2RlbGV0ZVwiKS5hZGRFdmVudExpc3RlbmVyKFwiY2xpY2tcIiwgZGVsZXRlT25lKTtcbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7RUFBQSxNQUFNLFVBQVUsR0FBRyxZQUFZO0VBQy9CLEVBQUUsTUFBTSxHQUFHLEdBQUcsZ0NBQWdDLENBQUM7RUFDL0MsRUFBRSxNQUFNLFFBQVEsR0FBRyxNQUFNLEtBQUssQ0FBQyxHQUFHLEVBQUU7RUFDcEMsSUFBSSxJQUFJLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FB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
