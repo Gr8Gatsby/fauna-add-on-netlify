@@ -49,7 +49,7 @@ const deleteOne = async () => {
 // // deleteOne();
 
 
-document.querySelector("#create").addEventListener("click", create);
+document.querySelector("#create").addEventListener("click", createJoke);
 document.querySelector("#read").addEventListener("click", readAll);
 document.querySelector("#update").addEventListener("click", update);
 document.querySelector("#delete").addEventListener("click", deleteOne);
