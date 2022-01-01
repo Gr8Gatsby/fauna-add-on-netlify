@@ -1,7 +1,7 @@
-const create = async () => {
-  const url = "/.netlify/functions/create";
+const createJoke = async () => {
+  const url = "/.netlify/functions/createJoke";
   const createDB = await fetch(url, {
-    body: JSON.stringify({ name: "Todo-list", desc: "Patrick's mother" }),
+    body: JSON.stringify({ name: "Joke", desc: "Patrick's mother" }),
     method: "POST",
     "Content-Type": "application/json",
   });
